@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>My Valentine 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{
+    box-sizing:border-box;
+    font-family:"Georgia","Segoe UI",serif;
+}
+
+body{
+    margin:0;
+    min-height:100vh;
+    background:radial-gradient(circle at top,#4b1c26,#1b0b10);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* ---------- GLOBAL BACK ARROW ---------- */
+.back-global{
+    position:fixed;
+    top:18px;
+    left:18px;
+    width:44px;
+    height:44px;
+    border-radius:50%;
+    background:#ffffff;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    font-size:20px;
+    cursor:pointer;
+    box-shadow:0 10px 25px rgba(0,0,0,.35);
+    transition:.2s;
+    z-index:1000;
+}
+.back-global:hover{transform:scale(1.1)}
+
+/* ---------- CARD ---------- */
+.card{
+    background:linear-gradient(180deg,#fffaf7,#fdecef);
+    width:92%;
+    max-width:420px;
+    padding:28px 24px 32px;
+    border-radius:26px;
+    text-align:center;
+    box-shadow:
+        0 0 0 2px rgba(255,255,255,.6),
+        0 25px 55px rgba(0,0,0,.45),
+        0 0 40px rgba(233,30,99,.25);
+    animation:fade .45s ease;
+}
+
+@keyframes fade{
+    from{opacity:0;transform:scale(.96)}
+    to{opacity:1;transform:scale(1)}
+}
+
+.hidden{display:none}
+
+/* ---------- IMAGE ---------- */
+.card img{
+    width:160px;
+    margin:8px auto 16px;
+    display:block;
+    border-radius:16px;
+    box-shadow:0 12px 30px rgba(0,0,0,.25);
+}
+
+/* ---------- TEXT ---------- */
+h1{
+    color:#c43b57;
+    margin-bottom:8px;
+}
+p{
+    color:#5a2a33;
+    font-size:15px;
+}
+
+/* ---------- BUTTON ---------- */
+button{
+    margin-top:14px;
+    padding:14px 34px;
+    border-radius:28px;
+    border:none;
+    background:#e91e63;
+    color:white;
+    font-size:15px;
+    cursor:pointer;
+    box-shadow:0 10px 25px rgba(233,30,99,.45);
+    transition:.2s;
+}
+button:hover{transform:scale(1.08)}
+
+.gray{
+    background:#e0e0e0;
+    color:#333;
+    box-shadow:0 8px 20px rgba(0,0,0,.2);
+}
+
+/* ---------- OPTIONS ---------- */
+.options{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+    margin-top:20px;
+}
+
+.option{
+    background:#fff;
+    border-radius:18px;
+    padding:14px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    cursor:pointer;
+    box-shadow:0 10px 22px rgba(0,0,0,.2);
+    transition:.2s;
+}
+.option:hover{transform:scale(1.05)}
+
+.circle{
+    width:32px;
+    height:32px;
+    border-radius:50%;
+    background:#d63c5b;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+}
+
+/* ---------- LOVE PAGE ---------- */
+.messages{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    margin-top:10px;
+}
+
+.msg{
+    background:#fff;
+    padding:12px;
+    border-radius:14px;
+    box-shadow:0 6px 14px rgba(0,0,0,.2);
+}
+.lang{font-size:11px;color:#8b3d4d}
+.text{font-size:16px}
+
+/* ---------- LETTER ---------- */
+.letter{
+    background:#fdf6ee;
+    padding:30px 26px;
+    border-radius:22px;
+    border:6px solid #c85b6b;
+    box-shadow:
+        inset 0 0 20px rgba(255,255,255,.7),
+        0 20px 40px rgba(0,0,0,.4);
+}
+.letter p{
+    font-size:15px;
+    line-height:1.6;
+}
+.footer{
+    margin-top:20px;
+    font-weight:bold;
+    color:#9b2f43;
+}
+</style>
+</head>
+
+<body>
+
+<!-- BACK ARROW -->
+<div class="back-global" id="backBtn" onclick="back()">←</div>
+
+<!-- PAGE 1 -->
+<div class="card" id="s1">
+    <img src="1.png">
+    <h1>Hey!</h1>
+    <p>I want to ask you something?<br>Can I?</p>
+    <button onclick="go('s3')">YES</button><br>
+    <button class="gray" onclick="go('s2')">NO</button>
+</div>
+
+<!-- PAGE 2 -->
+<div class="card hidden" id="s2">
+    <img src="2.jpg">
+    <h1>How Dare You!</h1>
+    <p>I will go back to say YES!</p>
+    <button onclick="back()">Go Back</button>
+</div>
+
+<!-- PAGE 3 -->
+<div class="card hidden" id="s3">
+    <img src="3.jpg">
+    <h1>GOOD MY CUTIEPIE 😍</h1>
+    <p>Most important question<br>are you ready?? 😁</p>
+    <button onclick="go('s4')">Yes!! 💘</button>
+</div>
+
+<!-- PAGE 4 -->
+<div class="card hidden" id="s4">
+    <img src="4.jfif">
+    <h1>Will you be my Valentine?</h1>
+    <div class="options">
+        <div class="option" onclick="go('s5')"><div class="circle">A</div>Yes</div>
+        <div class="option" onclick="go('s5')"><div class="circle">B</div>A</div>
+        <div class="option" onclick="go('s5')"><div class="circle">C</div>B</div>
+        <div class="option" onclick="go('s5')"><div class="circle">D</div>C</div>
+    </div>
+    <p>Pick any option… they’re all winners! 🌸</p>
+</div>
+
+<!-- PAGE 5 -->
+<div class="card hidden" id="s5">
+    <h1>This is for you 😍 😁</h1>
+    <div class="messages">
+        <div class="msg"><div class="lang">ENGLISH</div><div class="text">I Love You</div></div>
+        <div class="msg"><div class="lang">URDU</div><div class="text">میں تم سے پیار کرتا ہوں</div></div>
+        <div class="msg"><div class="lang">HINDI</div><div class="text">मैं तुमसे प्यार करता हूँ</div></div>
+        <div class="msg"><div class="lang">FRENCH</div><div class="text">Je T'aime</div></div>
+        <div class="msg"><div class="lang">SPANISH</div><div class="text">Te Amo</div></div>
+    </div>
+    <p>❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️</p>
+    <button onclick="go('s6')">A Letter For You 💌</button>
+</div>
+
+<!-- PAGE 6 -->
+<div class="card hidden" id="s6">
+    <div class="letter">
+        <h1>My Dearest Valentine 💕</h1>
+        <p>
+        From the moment you walked into my life, everything became more beautiful.
+        Your smile lights up my darkest days, and your love makes me feel like the
+        luckiest person in the world.
+        </p>
+        <p>
+        Every moment with you is a treasure I hold close to my heart.
+        You are my best friend, my soulmate, and my forever love.
+        </p>
+        <p>
+        On this Valentine’s Day and every day after, I promise to cherish you,
+        to make you laugh, and to love you with all my heart.
+        </p>
+        <div class="footer">Forever Yours ❤️</div>
+    </div>
+</div>
+
+<script>
+let stack=["s1"], current="s1";
+const backBtn=document.getElementById("backBtn");
+
+function updateBack(){
+    backBtn.style.display = current==="s1" ? "none" : "flex";
+}
+
+function go(next){
+    document.getElementById(current).classList.add("hidden");
+    stack.push(current);
+    current=next;
+    document.getElementById(current).classList.remove("hidden");
+    updateBack();
+}
+
+function back(){
+    if(stack.length){
+        document.getElementById(current).classList.add("hidden");
+        current=stack.pop();
+        document.getElementById(current).classList.remove("hidden");
+        updateBack();
+    }
+}
+updateBack();
+</script>
+
+</body>
+</html>
